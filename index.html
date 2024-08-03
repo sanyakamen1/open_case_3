@@ -75,13 +75,11 @@
     <div class="box">
         <h1 style="font-family: Helvetica, sans-serif;">Нажми на кейс, чтобы открыть его</h1>
         <img id="mainImage" src="./id_154.png" alt="Closed Case" onclick="getCash()">
-        <img id="loadingImage" src="./gift-box.gif" alt="Loading" style="display: none;">
     </div>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <img id="modalImage" src="" alt="Skin">
-            <p id="modalText"></p>
             <button id= "modalButton" class="modal-button" onclick="closeModal()">Забрать скин</button>
         </div>
     </div>
@@ -114,38 +112,25 @@
             let box_el = document.getElementById("mainImage");
 
             box_el.onclick = null;
-
-            // Отображаем анимацию загрузки
-            const img = document.getElementById('mainImage');
-            const loadingImg = document.getElementById('loadingImage');
-            img.style.display = 'none';
-            loadingImg.style.display = 'block';
             
-            setTimeout(() => {
-                loadingImg.style.display = 'none'; // Скрываем анимацию загрузки
-                showModal();
-            }, 4500);
+            showModal();
         }
 
         function showModal() {
             const images = {
-                20: './P-90.png',
-                50: './M16.png',
-                70: './AK.png'
-            };
-
-            const texts = {
-                20: 'P-90',
-                50: 'M16',
-                70: 'AK-47',
+                148: '',
+                137: '',
+                66: '',
+                109: '',
+                153: '',
+                52: '',
+                103: '',
+                198: ''
             };
 
             // Устанавливаем изображение и текст в зависимости от значения cash
             const modalImage = document.getElementById('modalImage');
             modalImage.src = images[cash];
-
-            const modalText = document.getElementById('modalText');
-            modalText.textContent = texts[cash];
             
             const modal = document.getElementById('myModal');
             const modalButton = document.getElementById('modalButton');
@@ -164,6 +149,7 @@
             const modal = document.getElementById('myModal');
             if (event.target == modal) {
                 modal.style.display = 'none';
+                tg.sendData(cash.toString());
             }
         }
     </script>
